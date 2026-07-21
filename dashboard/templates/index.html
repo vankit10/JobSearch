@@ -1,0 +1,409 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Dashboard Cards -->
+
+<div class="row g-4 mb-4">
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="card stat-card bg-primary text-white shadow">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <h6>Total Jobs</h6>
+
+                        <h2>{{ total_jobs }}</h2>
+
+                    </div>
+
+                    <i class="bi bi-briefcase-fill display-4"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="card stat-card bg-success text-white shadow">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <h6>Companies</h6>
+
+                        <h2>{{ total_companies }}</h2>
+
+                    </div>
+
+                    <i class="bi bi-building display-4"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="card stat-card bg-warning text-dark shadow">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <h6>Countries</h6>
+
+                        <h2>{{ total_countries }}</h2>
+
+                    </div>
+
+                    <i class="bi bi-globe-americas display-4"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+        <div class="card stat-card bg-danger text-white shadow">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <h6>Sources</h6>
+
+                        <h2>{{ total_sources }}</h2>
+
+                    </div>
+
+                    <i class="bi bi-database-fill display-4"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Search -->
+
+<div class="card shadow mb-4">
+
+    <div class="card-body">
+
+        <form method="get" class="row g-3">
+
+            <div class="col-lg-4">
+
+                <input
+                    type="text"
+                    class="form-control"
+                    name="keyword"
+                    placeholder="Search company or job title..."
+                    value="{{ keyword }}">
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <select class="form-select" name="country">
+
+                    <option value="">All Countries</option>
+
+                    <option value="Germany"
+                    {% if country=="Germany" %}selected{% endif %}>
+                    Germany
+                    </option>
+
+                    <option value="United Kingdom"
+                    {% if country=="United Kingdom" %}selected{% endif %}>
+                    United Kingdom
+                    </option>
+
+                    <option value="Netherlands"
+                    {% if country=="Netherlands" %}selected{% endif %}>
+                    Netherlands
+                    </option>
+
+                    <option value="Ireland"
+                    {% if country=="Ireland" %}selected{% endif %}>
+                    Ireland
+                    </option>
+
+                    <option value="Remote"
+                    {% if country=="Remote" %}selected{% endif %}>
+                    Remote
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <select class="form-select" name="source">
+
+                    <option value="">All Sources</option>
+
+                    {% for item in sources %}
+
+                    <option value="{{ item }}"
+                    {% if source==item %}selected{% endif %}>
+
+                        {{ item }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <select class="form-select" name="sort">
+
+                    <option value="company"
+                    {% if sort=="company" %}selected{% endif %}>
+                    Company
+                    </option>
+
+                    <option value="title"
+                    {% if sort=="title" %}selected{% endif %}>
+                    Title
+                    </option>
+
+                    <option value="location"
+                    {% if sort=="location" %}selected{% endif %}>
+                    Location
+                    </option>
+
+                    <option value="source"
+                    {% if sort=="source" %}selected{% endif %}>
+                    Source
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="col-lg-2 d-grid">
+
+                <button class="btn btn-primary">
+
+                    <i class="bi bi-search"></i>
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- Jobs Table -->
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+
+        <h5 class="mb-0">
+
+            <i class="bi bi-list-ul"></i>
+
+            Latest Jobs
+
+        </h5>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover align-middle mb-0">
+
+            <thead class="table-light">
+
+                <tr>
+
+                    <th>Company</th>
+
+                    <th>Job Title</th>
+
+                    <th>Location</th>
+
+                    <th>Source</th>
+
+                    <th width="120">Apply</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% if jobs %}
+
+                {% for job in jobs %}
+
+                <tr>
+
+                    <td>
+
+                        <strong>
+
+                            <i class="bi bi-building text-primary"></i>
+
+                            {{ job.company }}
+
+                        </strong>
+
+                    </td>
+
+                    <td>
+
+                        {{ job.title }}
+
+                    </td>
+
+                    <td>
+
+                        <i class="bi bi-geo-alt-fill text-danger"></i>
+
+                        {{ job.location }}
+
+                    </td>
+
+                    <td>
+
+                        <span class="badge bg-info">
+
+                            {{ job.source }}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            href="{{ job.url }}"
+                            target="_blank"
+                            class="btn btn-success btn-sm">
+
+                            <i class="bi bi-box-arrow-up-right"></i>
+
+                            Apply
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            {% else %}
+
+                <tr>
+
+                    <td colspan="5" class="text-center p-5">
+
+                        <h4>No Jobs Found</h4>
+
+                    </td>
+
+                </tr>
+
+            {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- Pagination -->
+
+<nav class="mt-4">
+
+    <ul class="pagination justify-content-center">
+
+        {% if page > 1 %}
+
+        <li class="page-item">
+
+            <a class="page-link"
+            href="/?page={{ page-1 }}&keyword={{ keyword }}&country={{ country }}&source={{ source }}&sort={{ sort }}">
+
+                <i class="bi bi-chevron-left"></i>
+
+                Previous
+
+            </a>
+
+        </li>
+
+        {% endif %}
+
+        <li class="page-item active">
+
+            <span class="page-link">
+
+                {{ page }}
+
+            </span>
+
+        </li>
+
+        <li class="page-item">
+
+            <a class="page-link"
+            href="/?page={{ page+1 }}&keyword={{ keyword }}&country={{ country }}&source={{ source }}&sort={{ sort }}">
+
+                Next
+
+                <i class="bi bi-chevron-right"></i>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</nav>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h2>{{ job.company }}</h2>
+
+<h4>{{ job.title }}</h4>
+
+<p>
+
+<strong>Location:</strong>
+
+{{ job.location }}
+
+</p>
+
+<a
+class="btn btn-success"
+href="{{ job.url }}"
+target="_blank">
+
+Open Original Job
+
+</a>
+
+<a
+class="btn btn-secondary"
+href="/">
+
+Back
+
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

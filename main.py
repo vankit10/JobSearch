@@ -1,19 +1,8 @@
-from database import create_database
-from scrapers.greenhouse import GreenhouseScraper
+from services.job_service import JobService
 
 
 def main():
-
-    create_database()
-
-    scraper = GreenhouseScraper()
-
-    jobs = scraper.fetch_jobs()
-
-    print(f"\nFound {len(jobs)} jobs\n")
-
-    for job in jobs:
-        print(job)
+    JobService().run()
 
 
 if __name__ == "__main__":

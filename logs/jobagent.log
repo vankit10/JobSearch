@@ -1,0 +1,25 @@
+2026-07-08 20:18:52,067 - INFO - ============================================================
+2026-07-08 20:18:52,067 - INFO - Job Agent Started
+2026-07-08 20:18:52,067 - INFO - Starting job download...
+2026-07-08 20:19:41,943 - INFO - ============================================================
+2026-07-08 20:19:41,943 - INFO - Job Agent Started
+2026-07-08 20:19:41,943 - INFO - Starting job download...
+2026-07-08 20:19:43,882 - INFO - GreenhouseScraper: 745 jobs downloaded
+2026-07-08 20:19:43,882 - INFO - Filtering iOS jobs...
+2026-07-08 20:19:43,884 - INFO - 3 jobs matched filters
+2026-07-08 20:19:43,884 - INFO - Saving jobs into database...
+2026-07-08 20:19:43,885 - INFO - 0 new jobs saved
+2026-07-08 20:19:43,885 - INFO - No jobs to export
+2026-07-08 20:19:43,885 - INFO - No email notification required
+2026-07-08 20:19:43,885 - INFO - Job Agent Finished
+2026-07-21 19:52:23,085 - INFO - ============================================================
+2026-07-21 19:52:23,085 - INFO - Job Agent Started
+2026-07-21 19:52:23,085 - INFO - Starting job download...
+2026-07-21 19:52:25,430 - INFO - GreenhouseScraper: 774 jobs downloaded
+2026-07-21 19:52:25,430 - INFO - Filtering iOS jobs...
+2026-07-21 19:52:25,431 - INFO - 4 jobs matched filters
+2026-07-21 19:52:25,431 - INFO - Saving jobs into database...
+2026-07-21 19:52:25,433 - INFO - 1 new jobs saved
+2026-07-21 19:52:25,433 - INFO - CSV exported : reports/jobs_2026_07_21_19_52.csv
+2026-07-21 19:52:30,427 - INFO - Email notification sent
+2026-07-21 19:52:30,428 - INFO - Job Agent Finished

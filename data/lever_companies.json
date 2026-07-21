@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Coinbase",
+        "board": "coinbase"
+    },
+    {
+        "name": "Miro",
+        "board": "miro"
+    },
+    {
+        "name": "Rippling",
+        "board": "rippling"
+    },
+    {
+        "name": "Brex",
+        "board": "brex"
+    },
+    {
+        "name": "Zapier",
+        "board": "zapier"
+    }
+]
