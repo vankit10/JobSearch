@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
 
     <title>🚀 Job Agent Dashboard</title>
 
-    <!-- Bootstrap -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
           rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
-
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Custom CSS -->
 
     <link rel="stylesheet"
           href="/static/style.css">
@@ -29,51 +21,51 @@
 
 <body>
 
-<!-- ========================= NAVBAR ========================= -->
+<div id="loadingOverlay" class="loading-overlay d-none">
+    <div class="spinner-border text-light"></div>
+</div>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="/">
-
+        <a class="navbar-brand fw-bold"
+           href="/">
             <i class="bi bi-briefcase-fill"></i>
-
             Job Agent
-
         </a>
 
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center gap-2">
 
-            <!-- Last Refresh -->
-
-            <span id="lastRefresh"
-                  class="text-white me-3 small">
-
+            <small class="text-white">
                 Last Refresh:
                 <span id="timeText">--:--:--</span>
+            </small>
 
-            </span>
+            <a href="/export"
+               class="btn btn-success">
+                <i class="bi bi-download"></i>
+                Export CSV
+            </a>
 
-            <!-- Refresh Button -->
+            <button
+                id="darkToggle"
+                class="btn btn-dark">
+                🌙
+            </button>
 
             <button
                 id="refreshBtn"
                 class="btn btn-light">
 
-                <span
-                    id="refreshText">
-
+                <span id="refreshText">
                     <i class="bi bi-arrow-clockwise"></i>
-
                     Refresh
-
                 </span>
 
                 <span
                     id="loadingSpinner"
                     class="spinner-border spinner-border-sm d-none">
-
                 </span>
 
             </button>
@@ -84,61 +76,78 @@
 
 </nav>
 
-<!-- ========================= PAGE ========================= -->
-
 <div class="container py-4">
 
     {% block content %}
-
     {% endblock %}
 
 </div>
 
-<!-- Bootstrap JS -->
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- ========================= JS ========================= -->
 
 <script>
 
-function updateTime(){
-
-    const now = new Date();
-
+function updateClock(){
     document.getElementById("timeText").innerHTML =
-        now.toLocaleTimeString();
-
+        new Date().toLocaleTimeString();
 }
 
-updateTime();
+updateClock();
+setInterval(updateClock,1000);
 
-setInterval(updateTime,1000);
+// Auto Refresh every 60 seconds
+setInterval(function(){
+    location.reload();
+},60000);
 
-document
-.getElementById("refreshBtn")
-.addEventListener("click",function(){
+// Refresh button
+document.getElementById("refreshBtn").onclick=function(){
 
-    const spinner =
-        document.getElementById("loadingSpinner");
+    document
+    .getElementById("loadingSpinner")
+    .classList.remove("d-none");
 
-    const text =
-        document.getElementById("refreshText");
+    document
+    .getElementById("refreshText")
+    .classList.add("d-none");
 
-    spinner.classList.remove("d-none");
-
-    text.classList.add("d-none");
+    document
+    .getElementById("loadingOverlay")
+    .classList.remove("d-none");
 
     setTimeout(function(){
-
         location.reload();
+    },500);
 
-    },600);
+};
 
-});
+// Dark Mode
+const body=document.body;
+
+if(localStorage.getItem("theme")==="dark"){
+    body.classList.add("dark-mode");
+}
+
+document
+.getElementById("darkToggle")
+.onclick=function(){
+
+    body.classList.toggle("dark-mode");
+
+    if(body.classList.contains("dark-mode")){
+        localStorage.setItem("theme","dark");
+    }else{
+        localStorage.setItem("theme","light");
+    }
+
+};
+
+// Browser Notifications
+if("Notification" in window){
+    Notification.requestPermission();
+}
 
 </script>
 
 </body>
-
 </html>

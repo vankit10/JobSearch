@@ -1,217 +1,282 @@
-/* ===========================
-   GENERAL
-=========================== */
+/* ==========================================================
+   Job Agent Dashboard Styles
+   ========================================================== */
 
-body{
-    background:#eef3f8;
-    font-family:Arial, Helvetica, sans-serif;
+body {
+    background: #f5f7fb;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ===========================
-   NAVBAR
-=========================== */
+/* ==========================================================
+   Navbar
+   ========================================================== */
 
-.navbar{
-    box-shadow:0 4px 15px rgba(0,0,0,.12);
+.navbar {
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
 }
 
-.navbar-brand{
-    font-size:26px;
-    font-weight:bold;
-    letter-spacing:.5px;
+.navbar-brand {
+    font-size: 1.35rem;
+    font-weight: 700;
 }
 
-/* ===========================
-   CARDS
-=========================== */
+/* ==========================================================
+   Cards
+   ========================================================== */
 
-.card{
-    border:none;
-    border-radius:18px;
-    overflow:hidden;
-    transition:.3s;
+.card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    transition: all .25s ease;
 }
 
-.card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 15px 30px rgba(0,0,0,.15);
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
 }
 
-/* ===========================
-   STAT CARDS
-=========================== */
-
-.stat-card{
-    cursor:pointer;
+.card-header {
+    font-weight: 600;
 }
 
-.stat-card h6{
-    opacity:.9;
-    margin-bottom:8px;
-    font-size:15px;
+/* ==========================================================
+   Statistic Cards
+   ========================================================== */
+
+.stat-card {
+    text-align: center;
+    padding: 20px;
 }
 
-.stat-card h2{
-    font-size:36px;
-    font-weight:bold;
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
 }
 
-.stat-card i{
-    font-size:55px;
-    opacity:.35;
+.stat-label {
+    color: #6c757d;
+    font-size: .95rem;
 }
 
-/* ===========================
-   TABLE
-=========================== */
+/* ==========================================================
+   Tables
+   ========================================================== */
 
-.table{
-    margin:0;
+.table {
+    vertical-align: middle;
 }
 
-.table thead th{
-    font-weight:600;
-    border:none;
+.table thead {
+    background: #0d6efd;
+    color: white;
 }
 
-.table tbody td{
-    vertical-align:middle;
+.table-hover tbody tr:hover {
+    background: rgba(13,110,253,.06);
 }
 
-.table tbody tr{
-    transition:.25s;
+.table td {
+    padding: .9rem;
 }
 
-.table tbody tr:hover{
-    background:#edf6ff;
+.table a {
+    text-decoration: none;
 }
 
-/* ===========================
-   BUTTONS
-=========================== */
-
-.btn{
-    border-radius:10px;
-    transition:.25s;
+.table a:hover {
+    text-decoration: underline;
 }
 
-.btn:hover{
-    transform:translateY(-2px);
+/* ==========================================================
+   Buttons
+   ========================================================== */
+
+.btn {
+    border-radius: 8px;
 }
 
-/* ===========================
-   SEARCH
-=========================== */
+.btn-primary,
+.btn-success,
+.btn-danger,
+.btn-warning,
+.btn-secondary {
+    transition: .2s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* ==========================================================
+   Forms
+   ========================================================== */
 
 .form-control,
-.form-select{
-    border-radius:10px;
-    min-height:48px;
+.form-select {
+    border-radius: 8px;
 }
 
 .form-control:focus,
-.form-select:focus{
-    box-shadow:0 0 0 .2rem rgba(13,110,253,.15);
+.form-select:focus {
+    box-shadow: 0 0 0 .2rem rgba(13,110,253,.15);
 }
 
-/* ===========================
-   BADGES
-=========================== */
+/* ==========================================================
+   Badges
+   ========================================================== */
 
-.badge{
-    font-size:13px;
-    padding:8px 12px;
-    border-radius:20px;
+.badge {
+    font-size: .8rem;
+    padding: .5em .7em;
 }
 
-/* ===========================
-   PAGINATION
-=========================== */
+/* ==========================================================
+   Pagination
+   ========================================================== */
 
-.pagination .page-link{
-    border-radius:8px;
-    margin:0 3px;
+.pagination .page-link {
+    border-radius: 8px;
+    margin: 0 2px;
 }
 
-.pagination .page-item.active .page-link{
-    background:#0d6efd;
-    border-color:#0d6efd;
+/* ==========================================================
+   Loading Overlay
+   ========================================================== */
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 
-/* ===========================
-   ICONS
-=========================== */
+/* ==========================================================
+   Smooth Animation
+   ========================================================== */
 
-.display-4{
-    opacity:.35;
+.fade-in {
+    animation: fadeIn .4s ease;
 }
 
-.bi-building{
-    color:#0d6efd;
-}
+@keyframes fadeIn {
 
-.bi-geo-alt-fill{
-    color:#dc3545;
-}
-
-/* ===========================
-   TABLE HEADER
-=========================== */
-
-.card-header{
-    border:none;
-    font-weight:bold;
-}
-
-/* ===========================
-   REFRESH BUTTON
-=========================== */
-
-#refreshBtn{
-    transition:.3s;
-}
-
-#refreshBtn:hover{
-    transform:rotate(10deg);
-}
-
-/* ===========================
-   SCROLLBAR
-=========================== */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#c6c6c6;
-    border-radius:20px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:#9e9e9e;
-}
-
-/* ===========================
-   RESPONSIVE
-=========================== */
-
-@media(max-width:768px){
-
-    .stat-card h2{
-        font-size:28px;
+    from {
+        opacity: 0;
+        transform: translateY(8px);
     }
 
-    .stat-card i{
-        font-size:42px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    .navbar-brand{
-        font-size:20px;
+}
+
+/* ==========================================================
+   Dark Mode
+   ========================================================== */
+
+.dark-mode {
+    background: #121212;
+    color: #f1f1f1;
+}
+
+.dark-mode .card {
+    background: #1d1d1d;
+    color: white;
+    box-shadow: 0 2px 12px rgba(0,0,0,.35);
+}
+
+.dark-mode .table {
+    color: white;
+}
+
+.dark-mode .table thead {
+    background: #212529;
+}
+
+.dark-mode .table-hover tbody tr:hover {
+    background: rgba(255,255,255,.05);
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select {
+    background: #2a2a2a;
+    color: white;
+    border-color: #444;
+}
+
+.dark-mode .form-control:focus,
+.dark-mode .form-select:focus {
+    background: #2a2a2a;
+    color: white;
+}
+
+.dark-mode .navbar {
+    background: #1c1c1c !important;
+}
+
+.dark-mode .btn-light {
+    background: #343a40;
+    color: white;
+    border-color: #444;
+}
+
+.dark-mode .btn-outline-secondary {
+    color: white;
+    border-color: #666;
+}
+
+.dark-mode .stat-label {
+    color: #bbbbbb;
+}
+
+.dark-mode a {
+    color: #8ec7ff;
+}
+
+.dark-mode a:hover {
+    color: #b9ddff;
+}
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 12px;
     }
 
-    .table{
-        font-size:14px;
+    .stat-number {
+        font-size: 1.6rem;
+    }
+
+    .table {
+        font-size: .9rem;
+    }
+
+    .btn {
+        font-size: .9rem;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .table {
+        font-size: .82rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
     }
 
 }
